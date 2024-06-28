@@ -23,6 +23,8 @@ writable/debugbar/*
 
 writable/database.db
 
+public/uploads/*
+
 php_errors.log
 
 #-------------------------

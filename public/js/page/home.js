@@ -10,6 +10,7 @@ const dropzone = new Dropzone(dropzoneWrapId, {
     maxFilesize: 1, // 1 MB
     resizeWidth: 1280,
     resizeHeight: 720,
+    resizeQuality: 1.0,
     maxFiles: 5,
     acceptedFiles: 'image/*',
     autoQueue: false,
