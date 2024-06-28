@@ -53,7 +53,7 @@
                         <div class="text-danger" data-dz-errormessage></div>
                     </div>
 
-                    <div class="progress col-2 me-2">
+                    <div class="progress col-2 me-2 d-none">
                         <div class="progress-bar" data-dz-uploadprogress></div>
                     </div>
 

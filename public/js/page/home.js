@@ -21,6 +21,24 @@ dropzone.on("addedfile", file => {
 dropzone.on("sending", file => {
     file.previewElement.querySelector(".dropzone-start")
         .setAttribute("disabled", "disabled")
+
+    file.previewElement.querySelector(".progress")
+        .classList.remove('d-none')
+})
+
+dropzone.on("success", file => {
+    file.previewElement.querySelector(".dropzone-start")
+        .classList.add('d-none')
+
+    file.previewElement.querySelector(".dropzone-cancel")
+        .classList.add('d-none')
+        
+    file.previewElement.querySelector(".progress")
+        .classList.add('d-none')
+
+    if (file.previewElement) {
+      return file.previewElement.classList.add("dz-success")
+    }
 })
 
 dropzoneWrap.querySelector(".dropzone-upload").onclick = () => {
