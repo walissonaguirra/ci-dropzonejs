@@ -5,12 +5,18 @@ const dropzone = new Dropzone(dropzoneWrapId, {
     url: DROPZONE_UPLOAD_URL,
     thumbnailWidth: 50,
     thumbnailHeight: 50,
-    parallelUploads: 1,
+    parallelUploads: 2,
     previewTemplate: DROPZONE_TEMPLATE,
-    maxFilesize: 2, // 2 MB
+    maxFilesize: 1, // 1 MB
+    resizeWidth: 1280,
+    resizeHeight: 720,
+    maxFiles: 5,
+    acceptedFiles: 'image/*',
     autoQueue: false,
     previewsContainer: `${dropzoneWrapId} .dropzone-items`,
-    clickable: `${dropzoneWrapId} .dropzone-select`
+    clickable: `${dropzoneWrapId} .dropzone-select`,
+    dictFileTooBig: "O arquivo é muito grande ({{filesize}}MiB). Tamanho máximo permitido é {{maxFilesize}}MiB.",
+    dictMaxFilesExceeded: "Você não pode carregar mais arquivos."
 })
 
 dropzone.on("addedfile", file => {
