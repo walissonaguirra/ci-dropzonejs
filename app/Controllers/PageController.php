@@ -40,13 +40,13 @@ class PageController extends BaseController
 
         if (!$img->hasMoved()) {
             $filename = $img->getRandomName();
-            $dirname =  date('d-m-Y') . '/';
+            $path = 'uploads/' . date('d-m-Y') . '/';
 
-            $img->store("../../public/uploads/{$dirname}", $filename);
+            $img->store("../../public/{$path}", $filename);
 
             $model = model('ImageModel');
             $model->save([
-                'path' => $dirname . $filename
+                'path' => $path . $filename
             ]);
             
             return $this->response->setStatusCode(Response::HTTP_ACCEPTED);
