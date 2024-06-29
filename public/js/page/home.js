@@ -21,8 +21,35 @@ const dropzone = new Dropzone(dropzoneWrapId, {
 })
 
 dropzone.on("addedfile", file => {
+    
+    if(file.status === undefined) {
+        file.previewElement.querySelector(".dropzone-start").classList.add('d-none')    
+        file.previewElement.querySelector(".dropzone-cancel").classList.add('d-none') 
+        file.previewElement.querySelector(".dropzone-delete").classList.remove('d-none') 
+        return;
+    }
+
     file.previewElement.querySelector(".dropzone-start")
         .onclick = () => dropzone.enqueueFile(file)
+
+})
+
+dropzone.on("removedfile", file => {
+    if (file.delete) {
+        fetch(file.delete, {
+            method: 'DELETE',
+            headers: {
+                "Content-Type": "application/json", 
+                "X-Requested-With": "XMLHttpRequest"
+            }
+        })
+    }
+
+    if (file.previewElement != null && file.previewElement.parentNode != null) {
+      file.previewElement.parentNode.removeChild(file.previewElement);
+    }
+
+    return dropzone._updateMaxFilesReachedClass();
 })
 
 dropzone.on("sending", file => {
@@ -43,6 +70,12 @@ dropzone.on("success", file => {
     file.previewElement.querySelector(".progress")
         .classList.add('d-none')
 
+
+    file.delete = JSON.parse(file.xhr.response).delete;
+
+    file.previewElement.querySelector(".dropzone-delete")
+        .classList.remove('d-none')
+
     if (file.previewElement) {
       return file.previewElement.classList.add("dz-success")
     }
@@ -54,7 +87,11 @@ dropzoneWrap.querySelector(".dropzone-upload").onclick = () => {
 }
 
 dropzoneWrap.querySelector(".dropzone-remove-all").onclick = () => {
-    dropzone.removeAllFiles(true)
+    dropzone.getFilesWithStatus(Dropzone.ADDED)
+        .map(file => dropzone.removeFile(file))
+
+    dropzone.getFilesWithStatus(Dropzone.ERROR)
+        .map(file => dropzone.removeFile(file))
 }
 
 IMAGE_EXISTS.map(image => {

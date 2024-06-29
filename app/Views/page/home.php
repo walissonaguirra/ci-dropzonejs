@@ -48,7 +48,8 @@
                 url: '<?= site_url($image->path) ?>',
                 filedata: {
                     name: '<?= $image->name ?>',
-                    size: <?= $image->size ?>
+                    size: <?= $image->size ?>,
+                    delete: '<?= url_to('delete', $image->id) ?>'
                 }
             },
             <?php endforeach ?>
@@ -70,6 +71,7 @@
 
                     <button type="button" class="dropzone-start btn btn-primary">Enviar</button>
                     <button type="button" class="dropzone-cancel btn btn-warning" data-dz-remove>Cancelar</button>
+                    <button type="button" class="dropzone-delete btn btn-danger d-none" data-dz-remove>Apagar</button>
                 </div>
             </li>
         `

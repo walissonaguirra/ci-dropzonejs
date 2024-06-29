@@ -53,13 +53,29 @@ class PageController extends BaseController
             $file = new File(ROOTPATH . "public/{$path}{$filename}");
 
             $model = model('ImageModel');
-            $model->save([
+            $imageId = $model->insert([
                 'name' => $imagename,
                 'size' => $file->getSizeByUnit('b'), 
                 'path' => $path . $filename
             ]);
             
-            return $this->response->setStatusCode(Response::HTTP_ACCEPTED);
+            return $this->response
+                ->setBody(json_encode([ 'delete' => url_to('delete', $imageId) ]))
+                ->setHeader('Content-Type', 'application/json')
+                ->setStatusCode(Response::HTTP_ACCEPTED);
+        }
+    }
+
+    public function delete(int $id)
+    {
+        $model = model('ImageModel');
+        $image = $model->find($id);
+
+        $filepath = ROOTPATH . 'public/' . $image->path;
+        
+        if (file_exists($filepath) && is_file($filepath)) {
+            unlink($filepath);
+            $model->delete($id);
         }
     }
 }
