@@ -1,4 +1,11 @@
-# CodeIgniter 4 - Upload de Fotos com Dropzone JS
+<div align="center">
+   
+   # CodeIgniter 4 - Upload de Fotos com Dropzone JS
+
+   ![ci-dropzone-printscreen](https://github.com/walissonaguirra/ci-dropzonejs/assets/53498071/b7d35244-2c6b-44b5-8a9c-efdc62f34061)
+
+</div>
+
 
 **Um sistema simples para upload de fotos com CodeIgniter 4 e Dropzone JS**
 
