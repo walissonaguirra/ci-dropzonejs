@@ -13,6 +13,8 @@ class ImageModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
+        'name',
+        'size',
         'path'
     ];
 

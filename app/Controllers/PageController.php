@@ -11,7 +11,12 @@ class PageController extends BaseController
     {
         helper(['form']);
 
-        return view('page/home');
+        $model = model('ImageModel');
+        $images = $model->findAll();
+
+        return view('page/home', [
+            'images' => $images
+        ]);
     }
 
     public function upload() 
@@ -39,13 +44,18 @@ class PageController extends BaseController
         $img = $this->request->getFile('file');
 
         if (!$img->hasMoved()) {
+            $imagename = $img->getName();
             $filename = $img->getRandomName();
             $path = 'uploads/' . date('d-m-Y') . '/';
 
-            $img->store("../../public/{$path}", $filename);
+            $filepath = $img->store("../../public/{$path}", $filename);
+
+            $file = new File(ROOTPATH . "public/{$path}{$filename}");
 
             $model = model('ImageModel');
             $model->save([
+                'name' => $imagename,
+                'size' => $file->getSizeByUnit('b'), 
                 'path' => $path . $filename
             ]);
             

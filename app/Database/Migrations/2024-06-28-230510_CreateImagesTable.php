@@ -15,6 +15,14 @@ class CreateImagesTable extends Migration
                 'unsigned' => true,
                 'auto_increment' => true
             ],
+            'name' => [
+                'type' => 'VARCHAR',
+                'constrant' => 255
+            ],
+            'size' => [
+                'type' => 'VARCHAR',
+                'constrant' => 20
+            ],
             'path' => [
                 'type' => 'VARCHAR',
                 'constrant' => 255

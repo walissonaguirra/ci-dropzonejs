@@ -42,6 +42,17 @@
 
     <?= script_tag('https://unpkg.com/dropzone@5/dist/min/dropzone.min.js') ?>
     <script>
+        const IMAGE_EXISTS = [
+            <?php foreach($images as $image): ?>
+            {
+                url: '<?= site_url($image->path) ?>',
+                filedata: {
+                    name: '<?= $image->name ?>',
+                    size: <?= $image->size ?>
+                }
+            },
+            <?php endforeach ?>
+        ]
         const DROPZONE_UPLOAD_URL = '<?= url_to('upload') ?>'
         const DROPZONE_TEMPLATE = `
             <li class="dropzone-item list-group-item px-2">

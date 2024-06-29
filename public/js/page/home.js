@@ -5,7 +5,7 @@ const dropzone = new Dropzone(dropzoneWrapId, {
     url: DROPZONE_UPLOAD_URL,
     thumbnailWidth: 50,
     thumbnailHeight: 50,
-    parallelUploads: 2,
+    parallelUploads: 1,
     previewTemplate: DROPZONE_TEMPLATE,
     maxFilesize: 1, // 1 MB
     resizeWidth: 1280,
@@ -56,3 +56,7 @@ dropzoneWrap.querySelector(".dropzone-upload").onclick = () => {
 dropzoneWrap.querySelector(".dropzone-remove-all").onclick = () => {
     dropzone.removeAllFiles(true)
 }
+
+IMAGE_EXISTS.map(image => {
+    dropzone.displayExistingFile(image.filedata, image.url); 
+})
