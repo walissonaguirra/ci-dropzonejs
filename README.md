@@ -1,8 +1,8 @@
 <div align="center">
    
-   # CodeIgniter 4 - Upload de Fotos com Dropzone JS
+   ## CodeIgniter 4 - Upload de Fotos com Dropzone JS
 
-   ![ci-dropzone-printscreen](https://github.com/walissonaguirra/ci-dropzonejs/assets/53498071/b7d35244-2c6b-44b5-8a9c-efdc62f34061)
+   ![Peek 2024-06-29 15-26](https://github.com/walissonaguirra/ci-dropzonejs/assets/53498071/4847025b-6ca9-4dc6-acad-e0d5374e0c17)
 
 </div>
 
@@ -16,7 +16,7 @@ Este projeto demonstra uma maneira fácil de fazer upload de fotos (ou outros ar
 ![Dropzone](https://img.shields.io/badge/Dropzone-%5E5.9.3-blue)
 ![License](https://img.shields.io/badge/Code%20License-MIT-blue.svg)
 
-## Funcionalidades:
+### Funcionalidades:
 
 - Upload de fotos
 - Visualização das fotos enviadas
@@ -25,7 +25,7 @@ Este projeto demonstra uma maneira fácil de fazer upload de fotos (ou outros ar
 - Salvamento das fotos no servidor
 - Capacidade de apagar fotos
 
-## Guia de instalação
+### Guia de instalação
 
 1. Clone o Repositório:
    
@@ -60,12 +60,12 @@ php spark serve
 
 6. Pronto!! Acesse a URL http://localhost:8080 em seu navegador para ver o projeto em ação.
 
-## Contribuidores
+### Contribuidores
 
 <a href="https://github.com/walissonaguirra/ci-dropzonejs/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=walissonaguirra/ci-dropzonejs" />
 </a>
 
-## Licença
+### Licença
 
 Este projeto está licenciado sob a licença MIT.
