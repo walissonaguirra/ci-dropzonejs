@@ -61,24 +61,26 @@ dropzone.on("sending", file => {
 })
 
 dropzone.on("success", file => {
-    file.previewElement.querySelector(".dropzone-start")
-        .classList.add('d-none')
+    setTimeout(async () => {
+        file.previewElement.querySelector(".dropzone-start")
+            .classList.add('d-none')
 
-    file.previewElement.querySelector(".dropzone-cancel")
-        .classList.add('d-none')
-        
-    file.previewElement.querySelector(".progress")
-        .classList.add('d-none')
+        file.previewElement.querySelector(".dropzone-cancel")
+            .classList.add('d-none')
+            
+        file.previewElement.querySelector(".progress")
+            .classList.add('d-none')
 
 
-    file.delete = JSON.parse(file.xhr.response).delete;
+        file.delete = JSON.parse(file.xhr.response).delete;
 
-    file.previewElement.querySelector(".dropzone-delete")
-        .classList.remove('d-none')
+        file.previewElement.querySelector(".dropzone-delete")
+            .classList.remove('d-none')
 
-    if (file.previewElement) {
-      return file.previewElement.classList.add("dz-success")
-    }
+        if (file.previewElement) {
+          return file.previewElement.classList.add("dz-success")
+        }
+    }, 300)
 })
 
 dropzoneWrap.querySelector(".dropzone-upload").onclick = () => {
@@ -90,7 +92,7 @@ dropzoneWrap.querySelector(".dropzone-remove-all").onclick = () => {
     dropzone.getFilesWithStatus(Dropzone.ADDED)
         .map(file => dropzone.removeFile(file))
 
-    dropzone.getFilesWithStatus(Dropzone.ERROR)
+    dropzone.getFilesWithStatus(Dropzone.ERROR  )
         .map(file => dropzone.removeFile(file))
 }
 
