@@ -3,6 +3,7 @@ const dropzoneWrap = document.querySelector(dropzoneWrapId)
 
 const dropzone = new Dropzone(dropzoneWrapId, {
     url: DROPZONE_UPLOAD_URL,
+    paramName: 'image',
     thumbnailWidth: 50,
     thumbnailHeight: 50,
     parallelUploads: 1,
